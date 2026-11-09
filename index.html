@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coca-Cola | CONALEP Puebla III</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f8fa;
+    color: #243044;
+}
+
+:root {
+    --rojo: #c8102e;
+    --rojo-oscuro: #990b24;
+    --verde: #00866a;
+    --azul: #35a8ed;
+    --blanco: #ffffff;
+}
+
+img {
+    max-width: 100%;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px 5%;
+    background: white;
+}
+
+.logo-coca {
+    width: 175px;
+}
+
+.logo-conalep {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--verde);
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.logo-conalep small {
+    display: block;
+    color: #555;
+    font-size: 11px;
+}
+
+.simbolo {
+    border: 3px solid var(--verde);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+}
+
+.hero {
+    text-align: center;
+    padding: 45px 20px;
+    color: white;
+    background: linear-gradient(130deg, #8f001c, #e51b3e, #c8102e);
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 50px);
+    margin: 10px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+}
+
+.etiqueta {
+    display: inline-block;
+    border: 1px solid #ffffff80;
+    border-radius: 25px;
+    padding: 7px 16px;
+    font-size: 13px;
+}
+
+.mascotas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.mascota {
+    background: #ffffff20;
+    border: 1px solid #ffffff60;
+    border-radius: 15px;
+    padding: 12px 22px;
+    min-width: 120px;
+}
+
+.mascota span {
+    display: block;
+}
+
+.emoji {
+    font-size: 43px;
+}
+
+.boton {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: var(--rojo);
+    padding: 12px 20px;
+    border-radius: 9px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.boton:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+}
+
+.hero .boton {
+    background: white;
+    color: var(--rojo);
+}
+
+nav {
+    background: #202020;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 13px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: var(--rojo);
+}
+
+main {
+    width: 92%;
+    max-width: 1200px;
+    margin: 28px auto;
+}
+
+.seccion {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px #0000000c;
+    scroll-margin-top: 80px;
+}
+
+.titulo {
+    color: var(--rojo);
+    border-bottom: 2px solid #f3d4db;
+    padding-bottom: 12px;
+    margin-top: 0;
+    font-size: 26px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.dato {
+    background: #fff7f8;
+    border-left: 5px solid var(--rojo);
+    border-radius: 9px;
+    padding: 15px;
+    overflow-wrap: anywhere;
+}
+
+.dato strong {
+    color: var(--rojo);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+}
+
+.producto {
+    text-align: center;
+    padding: 20px 15px;
+    border: 1px solid #eee;
+    border-radius: 13px;
+    background: #fff;
+    transition: .25s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px #00000015;
+}
+
+.producto h3 {
+    color: var(--rojo);
+}
+
+.producto .emoji {
+    font-size: 46px;
+}
+
+.producto p {
+    font-size: 14px;
+}
+
+.imagenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.imagenes img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    background: #fff7f8;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+.importante .dato {
+    background: #fff0f3;
+}
+
+.valores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.valor {
+    background: #f5fffb;
+    border: 1px solid #d5eee6;
+    border-top: 5px solid var(--verde);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.valor h3 {
+    color: var(--verde);
+    margin-top: 0;
+}
+
+.valor p {
+    text-align: justify;
+    font-size: 14px;
+}
+
+.tabla {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+    table-layout: fixed;
+    border-spacing: 4px;
+}
+
+th {
+    background: var(--azul);
+    color: white;
+    padding: 13px 6px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+td {
+    background: #dff4ff;
+    color: #16466b;
+    padding: 11px 6px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+td:hover {
+    background: #bce9ff;
+}
+
+td.hora {
+    background: #9cddfa;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+footer {
+    background: #202020;
+    color: white;
+    padding: 28px 15px;
+    text-align: center;
+}
+
+footer strong {
+    color: #ff647e;
+}
+
+@media(max-width:600px) {
+    .barra {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-coca {
+        width: 140px;
+    }
+
+    nav {
+        position: static;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .seccion {
+        padding: 18px;
+    }
+
+    .titulo {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGOTIPOS -->
+<div class="barra">
+    <a href="https://www.coca-cola.com/" target="_blank">
+        <img class="logo-coca"
+        src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg"
+        alt="Logotipo Coca-Cola">
+    </a>
+
+    <div class="logo-conalep">
+        <div class=""></div>
+        <div>
+            CONALEP
+            <small>Colegio Nacional de Educación Profesional Técnica</small>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA INICIAL -->
+<header class="hero" id="inicio">
+    <span class="etiqueta">PROYECTO ESCOLAR · CONALEP PUEBLA III</span>
+
+    <h1>Proyecto Escolar Coca-Cola</h1>
+
+    <p>
+        Información general de una de las empresas más reconocidas
+        del mundo.
+    </p>
+
+    <div class="mascotas">
+        <div class="mascota">
+            <span class="emoji">🥤</span>
+            <span>Coca-Cola</span>
+        </div>
+
+        <div class="mascota">
+            <span class="emoji">🎓</span>
+            <span>CONALEP</span>
+        </div>
+
+        <div class="mascota">
+            <span class="emoji">🐺</span>
+            <span>Mascota ilustrativa</span>
+        </div>
+    </div>
+
+    <a class="boton" href="#datos">Conocer el proyecto ↓</a>
+</header>
+
+<!-- MENÚ -->
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#datos">Datos escolares</a>
+    <a href="#empresa">Empresa</a>
+    <a href="#productos">Productos</a>
+    <a href="#importante">Datos relevantes</a>
+    <a href="#horario">Horario</a>
+    <a href="#valores">Valores CONALEP</a>
+</nav>
+
+<main>
+
+<!-- DATOS ESCOLARES -->
+<section class="seccion" id="datos">
+    <h2 class="titulo">🎓 Datos escolares</h2>
+
+    <div class="grid">
+        <div class="dato">
+            <strong>Escuela</strong>
+            CONALEP Puebla III
+        </div>
+
+        <div class="dato">
+            <strong>Nombre</strong>
+            Velázquez Coyote Mia
+        </div>
+
+        <div class="dato">
+            <strong>Nombre</strong>
+            Vazquez De la luz Nancy Michelle
+        </div>
+
+        <div class="dato">
+            <strong>Materia</strong>
+            Dominio de Paradigma de Programación
+        </div>
+
+        <div class="dato">
+            <strong>Proyecto</strong>
+            Página web sobre una empresa
+        </div>
+
+        <div class="dato">
+            <strong>Archivo</strong>
+            index.html
+        </div>
+    </div>
+</section>
+
+<!-- EMPRESA -->
+<section class="seccion" id="empresa">
+    <h2 class="titulo">🏢 Sobre la empresa</h2>
+
+    <p>
+        Coca-Cola es una empresa reconocida mundialmente por la producción
+        y comercialización de bebidas. Su producto más conocido es
+        Coca-Cola, una bebida gaseosa que se comercializa en numerosos países.
+    </p>
+
+    <p>
+        La compañía fue fundada en 1886 en Atlanta, Georgia, Estados Unidos.
+        Con el paso de los años, se convirtió en una de las marcas más
+        reconocidas a nivel internacional.
+    </p>
+
+    <p>
+        La empresa trabaja en diferentes áreas relacionadas con bebidas,
+        distribución, publicidad y comercialización de productos.
+    </p>
+
+    <a class="boton" href="https://www.coca-cola.com/"
+       target="_blank" rel="noopener noreferrer">
+        Visitar sitio oficial ↗
+    </a>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="seccion" id="productos">
+    <h2 class="titulo">🥤 Productos</h2>
+
+    <div class="productos">
+        <article class="producto">
+            <span class="emoji">🥤</span>
+            <h3>Coca-Cola</h3>
+            <p>Bebida gaseosa conocida por su sabor característico.</p>
+        </article>
+
+        <article class="producto">
+            <span class="emoji">🥫</span>
+            <h3>Coca-Cola Sin Azúcar</h3>
+            <p>Versión de Coca-Cola sin azúcar.</p>
+        </article>
+
+        <article class="producto">
+            <span class="emoji">🍋</span>
+            <h3>Sprite</h3>
+            <p>Bebida gaseosa con sabor cítrico.</p>
+        </article>
+
+        <article class="producto">
+            <span class="emoji">🍊</span>
+            <h3>Fanta</h3>
+            <p>Bebida gaseosa disponible en diferentes sabores.</p>
+        </article>
+
+        <article class="producto">
+            <span class="emoji">💧</span>
+            <h3>Powerade</h3>
+            <p>Bebida desarrollada para personas que realizan actividad física.</p>
+        </article>
+
+        <article class="producto">
+            <span class="emoji">🚰</span>
+            <h3>Agua Ciel</h3>
+            <p>
+                Producto de agua embotellada comercializado por la compañía
+                en México.
+            </p>
+        </article>
+    </div>
+</section>
+
+<!-- DATOS RELEVANTES -->
+<section class="seccion importante" id="importante">
+    <h2 class="titulo">📌 Datos relevantes</h2>
+
+    <div class="grid">
+        <div class="dato">
+            <strong>Año de creación</strong>
+            1886.
+        </div>
+
+        <div class="dato">
+            <strong>Lugar de origen</strong>
+            Atlanta, Georgia, Estados Unidos.
+        </div>
+
+        <div class="dato">
+            <strong>Actividad</strong>
+            Producción, comercialización y distribución de bebidas.
+        </div>
+
+        <div class="dato">
+            <strong>Reconocimiento</strong>
+            Coca-Cola es una de las marcas de bebidas más conocidas
+            a nivel mundial.
+        </div>
+
+        <div class="dato">
+            <strong>Presencia</strong>
+            Sus productos se comercializan en numerosos países.
+        </div>
+    </div>
+</section>
+
+<!-- IMPORTANCIA -->
+<section class="seccion">
+    <h2 class="titulo">🌎 Importancia de la empresa</h2>
+
+    <p>
+        Coca-Cola es importante dentro de la industria de bebidas debido
+        a su gran presencia internacional, sus estrategias de publicidad
+        y la variedad de productos que comercializa.
+    </p>
+
+    <p>
+        Además, la empresa ha desarrollado diferentes estrategias para
+        adaptarse a los cambios en las preferencias de los consumidores,
+        ofreciendo diferentes tipos de bebidas.
+    </p>
+</section>
+
+<!-- IMÁGENES -->
+<section class="seccion">
+    <h2 class="titulo">🖼️ Galería Coca-Cola</h2>
+
+    <div class="imagenes">
+        <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTutjdmAZze26MEnYHsmVQjNUkNniNWYMDCas72W-6g&s=10"
+        alt="Imagen de Coca-Cola">
+
+        <img
+        src="https://www.marketingdirecto.com/wp-content/uploads/2026/03/Diseno-sin-titulo-89.jpg"
+        alt="Publicidad de Coca-Cola">
+    </div>
+</section>
+
+<!-- VALORES CONALEP -->
+<section class="seccion" id="valores">
+    <h2 class="titulo"> Valores CONALEP</h2>
+
+    <div class="valores">
+
+        <article class="valor">
+            <h3>1. Respeto a la persona</h3>
+            <p>
+                Consideramos a cada una de las personas como individuos
+                dignos de atención, con intereses más allá de lo
+                estrictamente profesional o laboral.
+            </p>
+        </article>
+
+        <article class="valor">    
+          <h3>2. Compromiso con la sociedad</h3>
+            <p>
+                Reconocemos a la sociedad como la beneficiaria de nuestro
+                trabajo, considerando la importancia de su participación
+                en la determinación de nuestro rumbo. Para ello debemos
+                atender las necesidades específicas de cada región,
+                aprovechando las ventajas y compensando las desventajas
+                en cada una de ellas.
+            </p>
+        </article>
+        
+       
+        <article class="valor">
+            <h3>3. Responsabilidad</h3>
+            <p>
+                Cada uno de nosotros debe responsabilizarse del resultado
+                de su trabajo y tomar sus propias decisiones dentro del
+                ámbito de su competencia.
+            </p>
+        </article>
+           
+
+        <article class="valor">
+            <h3>4. Comunicación</h3>
+            <p>
+                Fomentamos la fluidez de comunicación institucional,
+                lo que implica claridad en la transmisión de ideas y de
+                información, así como una actitud responsable por parte
+                del receptor.
+            </p>
+        </article>
+
+        <article class="valor">
+            <h3>5. Cooperación</h3>
+            <p>
+                El todo es más que la suma de las partes, por lo que
+                impulsamos el trabajo en equipo, respetando las diferencias,
+                complementando esfuerzos y construyendo aportaciones
+                de los demás.
+            </p>
+        </article>
+
+        <article class="valor">
+            <h3>6. Mentalidad positiva</h3>
+            <p>
+                Tenemos la disposición para enfrentar retos con una visión
+                de éxito, considerando que siempre habrá una solución para
+                cada problema y evitando la inmovilidad ante la magnitud
+                de la tarea a emprender.
+            </p>
+        </article>
+
+        <article class="valor">
+            <h3>7. Calidad</h3>
+            <p>
+                Buscamos la excelencia en nuestro trabajo, procurando
+                mejorar continuamente nuestros procesos y resultados
+                para ofrecer servicios educativos de calidad.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<!-- HORARIO ESCOLAR -->
+<section class="seccion" id="horario">
+    <h2 class="titulo">📅 Horario escolar</h2>
+
+    <p>Horario de clases de lunes a viernes.</p>
+
+    <div class="tabla">
+        <table>
+            <tr>
+                <th>Hora</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+            </tr>
+
+            <tr>
+                <td class="hora">7:00-8:00</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+                <td>PENSAMIENTO MATEMÁTICO III</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+                <td>CIENCIAS NATURALES Y EXPERIMENTALES III</td>
+            </tr>
+
+            <tr>
+                <td class="hora">8:00-9:00</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+                <td>SELECCIÓN DE DATOS</td>
+            </tr>
+
+            <tr>
+                <td class="hora">9:00-10:00</td>
+                <td>INGLÉS III</td>
+                <td>PENSAMIENTO FILOSÓFICO Y HUMANIDADES III</td>
+                <td>SELECCIÓN DE DATOS</td>
+                <td>GESTIÓN DE SERVICIOS EN LA NUBE</td>
+                <td>SELECCIÓN DE DATOS</td>
+            </tr>
+
+            <tr>
+                <td class="hora">10:00-11:00</td>
+                <td>PENSAMIENTO MATEMÁTICO III</td>
+                <td>GESTIÓN DE SERVICIOS EN LA NUBE</td>
+                <td>SELECCIÓN DE DATOS</td>
+                <td>GESTIÓN DE SERVICIOS EN LA NUBE</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+            </tr>
+
+            <tr>
+                <td class="hora">11:00-12:00</td>
+                <td>PENSAMIENTO MATEMÁTICO III</td>
+                <td>GESTIÓN DE SERVICIOS EN LA NUBE</td>
+                <td>LENGUA Y COMUNICACIÓN III</td>
+                <td>INGLÉS III</td>
+                <td>CONFIGURACIÓN MATEMÁTICA Y ANÁLISIS ESTADÍSTICO</td>
+            </tr>
+
+            <tr>
+                <td class="hora">12:00-13:00</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>LENGUA Y COMUNICACIÓN III</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>CIENCIAS NATURALES Y EXPERIMENTALES III</td>
+                <td>SELECCIÓN DE DATOS</td>
+            </tr>
+
+            <tr>
+                <td class="hora">13:00-14:00</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>GESTIÓN DE SERVICIOS EN LA NUBE</td>
+                <td>DOMINIO DE PARADIGMA DE PROGRAMACIÓN</td>
+                <td>FORMACIÓN SOCIOEMOCIONAL III</td>
+                <td>SELECCIÓN DE DATOS</td>
+            </tr>
+        </table>
+    </div>
+
+    <p style="font-size:13px;color:#666">
+        En celulares puedes deslizar la tabla horizontalmente para ver
+        todos los días.
+    </p>
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="seccion">
+    <h2 class="titulo">📝 Conclusión</h2>
+
+    <p>
+        La elaboración de esta página web permite conocer información
+        importante sobre Coca-Cola, sus productos, su historia y su
+        presencia internacional. También permite aplicar conocimientos
+        de HTML y CSS para crear una página organizada, atractiva y
+        funcional como parte de nuestro aprendizaje en CONALEP Puebla III.
+    </p>
+</section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+    <p><strong>Proyecto escolar - CONALEP Puebla III</strong></p>
+    <p>Velázquez Coyote Mia</p>
+    <p>Vazquez De la luz Nancy Michelle</p>
+    <p>Dominio de Paradigma de Programación</p>
+    <p>CONALEP · Respeto · Responsabilidad · Calidad</p>
+    <p><a href="#inicio">Volver al inicio ↑</a></p>
+</footer>
+
+</body>
+</html>
